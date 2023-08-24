@@ -5,7 +5,7 @@
  * @license [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
  */
 
-namespace yii2tech\csvgrid;
+namespace alotacents\yii2-csv;
 
 /**
  * SerialColumn displays a column of row numbers (1-based).
@@ -15,7 +15,7 @@ namespace yii2tech\csvgrid;
  * ```php
  * 'columns' => [
  *     [
- *         'class' => 'yii2tech\csvgrid\SerialColumn',
+ *         'class' => 'alotacents\yii2-csv\SerialColumn',
  *     ],
  *     // ...
  * ]
