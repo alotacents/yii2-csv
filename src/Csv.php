@@ -5,7 +5,7 @@
  * @license [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
  */
 
-namespace yii2tech\csvgrid;
+namespace alotacents\yii2-csv;
 
 use Yii;
 use yii\base\Component;
@@ -21,10 +21,10 @@ use yii\i18n\Formatter;
  * Example:
  *
  * ```php
- * use yii2tech\csvgrid\CsvGrid;
+ * use alotacents\yii2-csv\Csv;
  * use yii\data\ArrayDataProvider;
  *
- * $exporter = new CsvGrid([
+ * $exporter = new Csv([
  *     'dataProvider' => new ArrayDataProvider([
  *         'allModels' => [
  *             [
@@ -55,7 +55,7 @@ use yii\i18n\Formatter;
  * @author Paul Klimov <klimov.paul@gmail.com>
  * @since 1.0
  */
-class CsvGrid extends Component
+class Csv extends Component
 {
     /**
      * @var \yii\data\DataProviderInterface the data provider for the view.
