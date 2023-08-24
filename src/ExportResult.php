@@ -5,7 +5,7 @@
  * @license [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
  */
 
-namespace yii2tech\csvgrid;
+namespace alotacents\yii2-csv;
 
 use Yii;
 use yii\base\Exception;
@@ -30,7 +30,7 @@ class ExportResult extends BaseObject
     /**
      * @var string base path for the temporary directory and files.
      */
-    public $basePath = '@runtime/csv-grid';
+    public $basePath = '@runtime/csv';
     /**
      * @var string base name, which should be used for the created files.
      */
