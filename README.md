@@ -23,13 +23,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist alotacents\yii2-csv
+php composer.phar require --prefer-dist alotacents/yii2-csv
 ```
 
 or add
 
 ```json
-"alotacents\yii2-csv": "*"
+"alotacents/yii2-csv": "*"
 ```
 
 to the require section of your composer.json.
