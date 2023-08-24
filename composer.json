@@ -1,5 +1,5 @@
 {
-    "name": "yii2tech/csv-grid",
+    "name": "alotacents/yii2-csv",
     "description": "Yii2 extension data export to CSV file",
     "keywords": ["yii2", "csv", "export", "large data"],
     "type": "yii2-extension",
@@ -29,7 +29,7 @@
         }
     ],
     "autoload": {
-        "psr-4": { "yii2tech\\csvgrid\\": "src" }
+        "psr-4": { "alotacents\\csv\\": "src" }
     },
     "extra": {
         "branch-alias": {
