@@ -21,7 +21,7 @@ use yii\i18n\Formatter;
  * Example:
  *
  * ```php
- * use alotacents\yii2-csv\Csv;
+ * use alotacents\yii2\csv\Csv;
  * use yii\data\ArrayDataProvider;
  *
  * $exporter = new Csv([
