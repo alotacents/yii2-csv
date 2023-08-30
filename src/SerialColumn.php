@@ -15,7 +15,7 @@ namespace alotacents\yii2\csv;
  * ```php
  * 'columns' => [
  *     [
- *         'class' => 'alotacents\yii2-csv\SerialColumn',
+ *         'class' => 'alotacents\yii2\csv\SerialColumn',
  *     ],
  *     // ...
  * ]
