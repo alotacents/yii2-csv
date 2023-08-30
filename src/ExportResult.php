@@ -5,7 +5,7 @@
  * @license [New BSD License](http://www.opensource.org/licenses/bsd-license.php)
  */
 
-namespace alotacents\yii2-csv;
+namespace alotacents\yii2\csv;
 
 use Yii;
 use yii\base\Exception;
