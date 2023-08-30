@@ -39,14 +39,14 @@ Usage
 -----
 
 This extension provides ability to export data to CSV file.
-Export is performed via `alotacents\yii2-csv\Csv` instance, which provides interface similar to `\yii\grid\GridView` widget.
+Export is performed via `alotacents\yii2\csv\Csv` instance, which provides interface similar to `\yii\grid\GridView` widget.
 
 Example:
 
 ```php
 <?php
 
-use alotacents\yii2-csv\Csv;
+use alotacents\yii2\csv\Csv;
 use yii\data\ArrayDataProvider;
 
 $exporter = new Csv([
@@ -75,7 +75,7 @@ $exporter = new Csv([
 $exporter->export()->saveAs('/path/to/file.csv');
 ```
 
-`alotacents\yii2-csv\Csv` allows exporting of the `\yii\data\DataProviderInterface` and `\yii\db\QueryInterface` instances.
+`alotacents\yii2\csv\Csv` allows exporting of the `\yii\data\DataProviderInterface` and `\yii\db\QueryInterface` instances.
 Export is performed via batches, which allows processing of the large data without memory overflow.
 
 In case of `\yii\data\DataProviderInterface` usage, data will be split to batches using pagination mechanism.
@@ -84,7 +84,7 @@ Thus you should setup pagination with page size in order to control batch size:
 ```php
 <?php
 
-use alotacents\yii2-csv\Csv;
+use alotacents\yii2\csv\Csv;
 use yii\data\ActiveDataProvider;
 
 $exporter = new Csv([
@@ -103,12 +103,12 @@ $exporter->export()->saveAs('/path/to/file.csv');
 In case of `\yii\db\QueryInterface` usage, `CsvGrid` will attempt to use `batch()` method, if it present in the query
 class (for example in case `\yii\db\Query` or `\yii\db\ActiveQuery` usage). If `batch()` method is not available -
 `yii\data\ActiveDataProvider` instance will be automatically created around given query.
-You can control batch size via `alotacents\yii2-csv\Csv::$batchSize`:
+You can control batch size via `alotacents\yii2\csv\Csv::$batchSize`:
 
 ```php
 <?php
 
-use alotacents\yii2-csv\Csv;
+use alotacents\yii2\csv\Csv;
 
 $exporter = new Csv([
     'query' => Item::find(),
@@ -123,7 +123,7 @@ the browser through download dialog:
 ```php
 <?php
 
-use alotacents\yii2-csv\Csv;
+use alotacents\yii2\csv\Csv;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 
@@ -149,14 +149,14 @@ This may come in handy in case you are planning to use result CSV files with pro
 maximum rows inside single file. For example: 'Open Office' and 'MS Excel 97-2003' allows maximum 65536 rows
 per CSV file, 'MS Excel 2007' - 1048576.
 
-You may use `alotacents\yii2-csv\Csv::$maxEntriesPerFile` to restrict maximum rows in the single result file.
+You may use `alotacents\yii2\csv\Csv::$maxEntriesPerFile` to restrict maximum rows in the single result file.
 In case the export result produce more then one CSV file - these files will be automatically archived into the single
 archive file. For example:
 
 ```php
 <?php
 
-use alotacents\yii2-csv\Csv;
+use alotacents\yii2\csv\Csv;
 
 $exporter = new Csv([
     'query' => Item::find(),
@@ -166,12 +166,12 @@ $exporter->export()->saveAs('/path/to/archive-file.zip'); // output ZIP archive!
 ```
 
 Note: you are not forced to receive multiple files result as a single archive. You can use
-`alotacents\yii2-csv\ExportResult::$csvFiles` to manually iterate over created CSV files and process them as you like:
+`alotacents\yii2\csv\ExportResult::$csvFiles` to manually iterate over created CSV files and process them as you like:
 
 ```php
 <?php
 
-use alotacents\yii2-csv\Csv;
+use alotacents\yii2\csv\Csv;
 
 $exporter = new Csv([
     'query' => Item::find(),
@@ -180,7 +180,7 @@ $exporter = new Csv([
 $result = $exporter->export();
 
 foreach ($result->csvFiles as $csvFile) {
-    /* @var $csvFile alotacents\yii2-csv\CsvFile */
+    /* @var $csvFile alotacents\yii2\csv\CsvFile */
     copy($csvFile->name, '/path/to/dir/' . basename($csvFile->name));
 }
 ```
@@ -189,12 +189,12 @@ foreach ($result->csvFiles as $csvFile) {
 ## Archiving results <span id="archiving-results"></span>
 
 Export result is archived automatically, if it contains more then one CSV file. However, you may enforce archiving of the
-export result via `alotacents\yii2-csv\ExportResult::$forceArchive`:
+export result via `alotacents\yii2\csv\ExportResult::$forceArchive`:
 
 ```php
 <?php
 
-use alotacents\yii2-csv\Csv;
+use alotacents\yii2\csv\Csv;
 
 $exporter = new Csv([
     'query' => Item::find(),
@@ -205,16 +205,16 @@ $exporter = new Csv([
 $exporter->export()->saveAs('/path/to/archive-file.zip'); // output ZIP archive!
 ```
 
-**Heads up!** By default `alotacents\yii2-csv\ExportResult` uses [PHP Zip](http://php.net/manual/en/book.zip.php) extension for the archive creating.
+**Heads up!** By default `alotacents\yii2\csv\ExportResult` uses [PHP Zip](http://php.net/manual/en/book.zip.php) extension for the archive creating.
 Thus it will fail, if this extension is not present in your environment.
 
-You can setup your own archive method via `\yii2tech\csvgrid\ExportResult::$archiver`.
+You can setup your own archive method via `alotacents\yii2\csv\ExportResult::$archiver`.
 For example:
 
 ```php
 <?php
 
-use alotacents\yii2-csv\Csv;
+use alotacents\yii2\csv\Csv;
 
 $exporter = new Csv([
     'query' => Item::find(),
@@ -234,13 +234,13 @@ $exporter = new Csv([
 $exporter->export()->saveAs('/path/to/items.tar');
 ```
 
-While sending file to the browser via `\yii2tech\csvgrid\ExportResult::send()` there is no need to check if result
+While sending file to the browser via `alotacents\yii2\csv\ExportResult::send()` there is no need to check if result
 is archived or not as correct file extension will be append automatically:
 
 ```php
 <?php
 
-use alotacents\yii2-csv\Csv;
+use alotacents\yii2\csv\Csv;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 
@@ -266,12 +266,12 @@ class ItemController extends Controller
 Although CSV dictates particular data format (each value quoted, values separated by comma, lines separated by line break),
 some cases require its changing. For example: you may need to separate values using semicolon, or may want to create
 TSV (tabular separated values) file instead CSV.
-You may customize format entries using `alotacents\yii2-csv\Csv::$csvFileConfig`:
+You may customize format entries using `alotacents\yii2\csv\Csv::$csvFileConfig`:
 
 ```php
 <?php
 
-use alotacents\yii2-csv\Csv;
+use alotacents\yii2\csv\Csv;
 
 $exporter = new Csv([
     'query' => Item::find(),
